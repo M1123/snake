@@ -1,0 +1,60 @@
+header{
+    width: 100%;
+    height: 10vh;
+    background-color: #cccccc;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5em;
+    
+}
+.container{
+    position: relative;
+    height: 85vh;
+}
+#food{
+    background-color: red;
+    width: 5vh;
+    height: 5vh;
+    border-radius: 50%;
+    position: absolute;
+}
+#snake{    
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    background-color: green;
+    position: absolute;
+}
+
+
+	
+#shead{
+	width: 10pt;
+	height: 10pt;
+	background-color: #0a0;
+	position: absolute;
+	top: 200pt;
+	left: 300pt; 
+	z-index: 10;
+	padding: 10pt;
+	transition: all 2s ease-in-out;
+	border-radius: 50%;
+}
+#starg{
+	width: 5pt;
+	height: 5pt;
+	background-color: rgb(11, 216, 206);
+	position: absolute;
+	top: 200pt;
+	left: 500pt; 
+	z-index: 9;
+	padding: 10pt;
+	border-radius: 50%;
+}
+#score{
+	width: 100pt;
+	height: 50pt;
+	background-color:  rgb(255, 255, 255);
+
+}
