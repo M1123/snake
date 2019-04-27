@@ -1,5 +1,5 @@
 $(()=>{
-    let id, delay=300,score=0, tailx=[],taily=[],i=0,
+    let id, delay=200,score=0, tailx=[],taily=[],i=0,
     HighScore,
     h=Math.floor($(".container").height()),
     w=Math.floor($(".container").width());
@@ -10,7 +10,7 @@ $(()=>{
     $(".container").css("width",w)
     console.log($(".container").width());
     HighScore = localStorage.getItem("score");
-    $("header").html('Предыдущий результат: ' +HighScore);
+    $("header").html('Рекорд: '+HighScore);
 
     Move=(dir)=>{
         let deltaX='+=0px',deltaY='+=0px' ;
@@ -33,31 +33,36 @@ $(()=>{
             break;
           };
         id = setInterval(()=> {
-            $( "#snake" ).animate( {top:deltaY, left:deltaX},delay-100 )
+            $( "#snake" ).animate( {top:deltaY, left:deltaX},delay/2 )
             if (($("#snake").position().top>=$(".container").height() -10)||($("#snake").position().left>=$(".container").width() -10)||($("#snake").position().top<0)||($("#snake").position().left<0)){
                 clearInterval(id);
-                alert('Game over! Ur score: '+score);
-                localStorage.setItem("score",score);
+                alert('Game over! Ваш счет: '+score);
+                if(score>HighScore){localStorage.setItem("score",score);}
                 location.reload();  
             }
-            // tailx[i]=$("#snake").position().left;
-            // taily[i]=$("#snake").position().top;
-            // i++;
-            $("#snake").position().left=Math.floor($("#snake").position().left)
-            $("#snake").position().top=Math.floor($("#snake").position().top)
+            // console.log(tailx[score]);
             if ((Math.abs($("#snake").position().left-$("#food").position().left)<1)&&(Math.abs($("#snake").position().top-$("#food").position().top)<1)){
                 score++; 
+                // $("#food").html(score+1);
+                delay-=5;
                 console.log('score = '+score);
+                console.log('delay = '+delay);
                 let fx=Math.floor(Math.random()*w/30)*30;
                 $("#food").css("left",fx)
                 let fy=Math.floor(Math.random()*h/30)*30;
                 $("#food").css("top",fy)
 
+                let tail=$('<div class="tail"></div>')
+                tailx[score]=$("#snake").position().left;
+                taily[score]=$("#snake").position().top;
+                $(tail).css("left",tailx[score]).css("top",taily[score])
+                $('.container').append(tail)
+
             }
 
-            console.log($("#snake").position().left);
-            console.log($("#food").position().left);
-          }, delay);
+            // console.log($("#snake").position().left);
+            // console.log($("#food").position().left);
+        }, delay);
     }
     keyEvent=()=>{
         switch (event.keyCode) //Анализ Unicode клавиш
