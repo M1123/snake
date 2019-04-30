@@ -17,6 +17,7 @@ header{
 }
 .score{
     width: 50%;
+    margin: 0 auto;
 }
 #reset{
     width: 60px;
