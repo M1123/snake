@@ -1,6 +1,5 @@
 $(()=>{
-    let id, delay=150,score=0, tailx=[],taily=[],i=0,
-    HighScore,
+    let id, delay=150,score=0,HighScore,
     h=Math.floor($(".container").height())*0.9,
     w=Math.floor($(".container").width())*0.9;
     h -= (h%30);
@@ -8,7 +7,12 @@ $(()=>{
     w -= (w%30);
     $(".container").css("width",w)
     HighScore = localStorage.getItem("score");
-    $("header").html('Рекорд: '+HighScore);
+    $(".score").html('Рекорд: '+HighScore);
+    
+    $("#reset").on("click", ()=>{
+        localStorage.setItem("score",score);
+        location.reload();  
+    })
 
     Move=(dir)=>{
         let deltaX='+=0px',deltaY='+=0px' ;
@@ -50,13 +54,6 @@ $(()=>{
                 $("#food").css("left",fx)
                 let fy=Math.floor(Math.random()*h/30)*30;
                 $("#food").css("top",fy)
-
-                // var tail=$('<div class="tail"></div>')
-                // $('.container').append(tail)
-                // tailx[score]=prevX;
-                // taily[score]=prevY;
-                // $(tail).eq(score).css("left",tailx[score]).css("top",taily[score])
-
             }
             tailx[score]=prevX;
             taily[score]=prevY;
