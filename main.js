@@ -35,8 +35,6 @@ $(()=>{
             break;
           };
         id = setInterval(()=> {
-            var prevX=$("#snake").position().left,
-            prevY=$("#snake").position().top;
             $( "#snake" ).animate( {top:deltaY, left:deltaX},delay/2 )
             if (($("#snake").position().top>=h-29)||($("#snake").position().left>=w-29)||($("#snake").position().top<0)||($("#snake").position().left<0)){
                 clearInterval(id);
@@ -56,6 +54,9 @@ $(()=>{
                 $("#food").css("top",fy)
                 if(score==10){
                     $(".container").css("backgroundImage","url(1.gif)");
+                }
+                if(score==11){
+                    $(".container").css("backgroundImage","url(grass.jpg)");
                 }
             }
         }, delay);
