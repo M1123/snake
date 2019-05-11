@@ -52,9 +52,7 @@ $(()=>{
                 $("#food").css("left",fx)
                 let fy=Math.floor(Math.random()*h/30)*30;
                 $("#food").css("top",fy)
-                if(score==20){
-                    $(".container").css("backgroundImage","url(1.gif)");
-                }
+                // if(score==20){$(".container").css("backgroundImage","url(1.gif)");}
             }
         }, delay);
     }
